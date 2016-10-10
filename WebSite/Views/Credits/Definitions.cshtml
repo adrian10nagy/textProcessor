@@ -1,0 +1,20 @@
+﻿@using DAL.Entities;
+
+@{
+    ViewBag.Title = "Definitions";
+    var definitionSources = (List<DefinitionSource>)ViewData["definitionSources"];
+}
+
+<h2>Sursele definițiilor</h2>
+
+<div class="row">
+    @foreach (var item in definitionSources)
+    {
+        <div class="col-xs-4 definitionSourceBox" id=@item.UrlName>
+            <p><b>@item.Name</b></p>
+            <p>@item.Publisher</p>
+            <p>@item.Author</p>
+            <p>@item.Year</p>
+        </div>
+    }
+</div>

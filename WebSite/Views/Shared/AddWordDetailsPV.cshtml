@@ -1,0 +1,298 @@
+﻿@model DAL.Entities.Word
+
+@{
+
+    List<SelectListItem> listTypeItems = new List<SelectListItem>();
+    listTypeItems.Add(new SelectListItem
+    {
+        Text = "Alege",
+        Value = "0",
+    });
+    listTypeItems.Add(new SelectListItem
+    {
+        Text = "Substantiv",
+        Value = "1",
+    });
+
+    listTypeItems.Add(new SelectListItem
+    {
+        Text = "Verb",
+        Value = "2",
+    });
+
+    listTypeItems.Add(new SelectListItem
+    {
+        Text = "Adjectiv",
+        Value = "3"
+    });
+
+    listTypeItems.Add(new SelectListItem
+    {
+        Text = "Adverb",
+        Value = "4"
+    });
+
+
+    List<SelectListItem> listMultiplicityItems = new List<SelectListItem>();
+    listMultiplicityItems.Add(new SelectListItem
+    {
+        Text = "Alege",
+        Value = "1"
+    });
+    listMultiplicityItems.Add(new SelectListItem
+    {
+        Text = "Singular",
+        Value = "2"
+    });
+    listMultiplicityItems.Add(new SelectListItem
+    {
+        Text = "Plural",
+        Value = "3"
+    });
+    listMultiplicityItems.Add(new SelectListItem
+    {
+        Text = "Lipsă",
+        Value = "4"
+    });
+    
+    #region noun
+
+    List<SelectListItem> listProperItems = new List<SelectListItem>();
+    listProperItems.Add(new SelectListItem
+    {
+        Text = "Alege",
+        Value = "1"
+    });
+    listProperItems.Add(new SelectListItem
+    {
+        Text = "Comun",
+        Value = "3"
+    });
+    listProperItems.Add(new SelectListItem
+    {
+        Text = "Propriu",
+        Value = "2"
+    });
+    listProperItems.Add(new SelectListItem
+    {
+        Text = "Lipsă",
+        Value = "4"
+    });
+
+
+    List<SelectListItem> listGenderItems = new List<SelectListItem>();
+    listGenderItems.Add(new SelectListItem
+    {
+        Text = "Alege",
+        Value = "1"
+    });
+    listGenderItems.Add(new SelectListItem
+    {
+        Text = "Masculin",
+        Value = "3"
+    });
+    listGenderItems.Add(new SelectListItem
+    {
+        Text = "Feminin",
+        Value = "2"
+    });
+    listGenderItems.Add(new SelectListItem
+    {
+        Text = "Lipsă",
+        Value = "4"
+    });
+
+
+
+    List<SelectListItem> listCaseItems = new List<SelectListItem>();
+    listCaseItems.Add(new SelectListItem
+    {
+        Text = "Alege",
+        Value = "1"
+    });
+    listCaseItems.Add(new SelectListItem
+    {
+        Text = "Acuzativ",
+        Value = "2"
+    });
+    listCaseItems.Add(new SelectListItem
+    {
+        Text = "Dativ",
+        Value = "3"
+    });
+    listCaseItems.Add(new SelectListItem
+    {
+        Text = "Genitiv",
+        Value = "4"
+    });
+    listCaseItems.Add(new SelectListItem
+    {
+        Text = "Nominativ",
+        Value = "5"
+    });
+    listCaseItems.Add(new SelectListItem
+    {
+        Text = "Vacativ",
+        Value = "6"
+    });
+    
+    #endregion
+
+
+    List<SelectListItem> listTimeItems = new List<SelectListItem>();
+    listTimeItems.Add(new SelectListItem
+    {
+        Text = "Alege",
+        Value = "1"
+    });
+    listTimeItems.Add(new SelectListItem
+    {
+        Text = "Trecut",
+        Value = "2"
+    });
+    listTimeItems.Add(new SelectListItem
+    {
+        Text = "Prezent",
+        Value = "3"
+    });
+    listTimeItems.Add(new SelectListItem
+    {
+        Text = "Viitor",
+        Value = "4"
+    });
+    listTimeItems.Add(new SelectListItem
+    {
+        Text = "Lipsă",
+        Value = "5"
+    });
+
+
+
+    List<SelectListItem> listPersonItems = new List<SelectListItem>();
+    listPersonItems.Add(new SelectListItem
+    {
+        Text = "Alege",
+        Value = "1"
+    });
+    listPersonItems.Add(new SelectListItem
+    {
+        Text = "Prima(I)",
+        Value = "2"
+    });
+    listPersonItems.Add(new SelectListItem
+    {
+        Text = "A doua(II)",
+        Value = "3"
+    });
+    listPersonItems.Add(new SelectListItem
+    {
+        Text = "A treia(III)",
+        Value = "4"
+    });
+    listPersonItems.Add(new SelectListItem
+    {
+        Text = "Lipsă",
+        Value = "5"
+    });
+
+
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelForModel("Tipul cuvântului", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("addWordDetailsType", listTypeItems)
+            </div>
+        </div>
+
+        @* Word1 = Substantiv *@
+        <div id="word1" class="group">
+            @* Plural *@
+            <div class="form-group">
+                @Html.LabelForModel("Plural", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("addWordDetailsMultiplicity", listMultiplicityItems)
+                </div>
+            </div>
+
+            @* Sex *@
+            <div class="form-group">
+                @Html.LabelForModel("Sex", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("addWordDetailsGender", listGenderItems)
+                </div>
+            </div>
+
+            @* Caz*@
+            <div class="form-group">
+                @Html.LabelForModel("Caz", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("addWordDetailsCase", listCaseItems)
+                </div>
+            </div>
+
+            @* Propriu*@
+            <div class="form-group">
+                @Html.LabelForModel("Propriu", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("addWordDetailsProper", listProperItems)
+                </div>
+            </div>
+        </div>
+
+        @* Word2 = Verb *@
+        <div id="word2" class="group">
+            @* Time *@
+            <div class="form-group">
+                @Html.LabelForModel("Timp", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("addWordDetailsTime", listTimeItems)
+                </div>
+            </div>
+
+            @* Plural *@
+            <div class="form-group">
+                @Html.LabelForModel("Persoana", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("addWordDetailsPerson", listPersonItems)
+                </div>
+            </div>
+
+            @* Plural *@
+            <div class="form-group">
+                @Html.LabelForModel("Plural", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("addWordDetailsMultiplicity", listMultiplicityItems)
+                </div>
+            </div>
+
+        </div>
+
+        @* Word3 = Adverb *@
+        <div id="word3" class="group">zxcv</div>
+
+        @* Word4 = Adjectiv *@
+        <div id="word4" class="group">qwerty</div>
+
+
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.group').hide();
+
+        $("#addWordDetailsType").change(function () {
+            $('.group').hide();
+            $('#word' + $(this).val()).show();
+        });
+    });
+</script>

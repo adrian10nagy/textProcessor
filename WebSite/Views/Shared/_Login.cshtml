@@ -1,0 +1,10 @@
+﻿
+@using (Html.BeginForm("Login", "User", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <input type="text" id="loginUserEmail" name="loginUserEmail" placeholder="Email" class="form-control" action="@Url.Action("Login", "User")" />
+    <input type="password" id="loginUserPassword" name="loginUserPassword" class="form-control" />
+    <a href="ReseteazaParola"> Recuperează parola </a>
+    <br />
+    <input type="submit" id="btnUserLogin" name="btnUserLogin" value="Log me in!" class="btn btn-lg btn-block btn-primary" />
+}

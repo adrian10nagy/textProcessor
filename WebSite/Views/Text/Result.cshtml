@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Result";
+    var fileName = (string)ViewData["fileName"];
+    var words = (string)ViewData["words"];
+    var filePath = (string)ViewData["filePath"];
+
+}
+
+<h2>1. Rezultatele</h2>
+
+@Html.Raw(@words)
+
+<h2>2. Decarcă fișierul cu rezultatele</h2>
+
+<a href="@filePath" download="@filePath">
+    <button class="btn btn-lg">Descarcă rezultatul</button>
+</a>

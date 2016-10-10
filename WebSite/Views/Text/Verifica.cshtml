@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Verifica";
+}
+
+<h2>Incarca PDF-ul și verifica textul</h2>
+
+@using (Html.BeginForm("Verifica", "Text", FormMethod.Post,
+                        new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <input type="file" name="file" />
+    <br />
+    <input type="submit" id="btnTextUploadFile" name="btnTextUploadFile" value="Incarca" class="btn btn-lg btn-block btn-primary" />
+}
+
+

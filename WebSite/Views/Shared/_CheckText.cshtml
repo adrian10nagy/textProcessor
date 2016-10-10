@@ -1,0 +1,16 @@
+﻿@{
+    var unidentifiedWords = (List<string>)ViewData["unidentifiedWords"];
+}
+
+<div>
+    @if (unidentifiedWords.Count > 0)
+    {
+        <h3>Cuvinte nerecunoscute:</h3>
+        foreach (var item in unidentifiedWords)
+        {
+            <div>
+                @Html.Raw(item)
+            </div>
+        }
+    }
+</div>

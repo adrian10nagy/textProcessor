@@ -1,0 +1,54 @@
+﻿@model DAL.Entities.WordMain
+@using DAL.Entities;
+
+@{
+    ViewBag.Title = "Details";
+    var inflectedWords = (List<WordInflection>)ViewData["inflectedWords"];
+}
+
+<h2>@Model.FormNoAcc</h2>
+
+<div>
+    <h4>@Model.description</h4>
+
+    <label class="inflexionWordShow">Toggle 'em</label>
+
+    <div id="DerivateDiv">
+        @foreach (var item in inflectedWords)
+        {
+            <p class="inflexionWordItem">
+                [ @item.FormNoAcc ] - @item.Description
+            </p>
+        }
+    </div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FormNoAcc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FormNoAcc)
+        </dd>
+
+        @if (@Model.Pronunciation != string.Empty)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Pronunciation)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pronunciation)
+            </dd>
+        }
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelType)
+        </dd>
+
+    </dl>
+</div>

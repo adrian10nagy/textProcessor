@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Index";
+    var wordRimes = (ViewData["wordRimes"] != null) ? (Dictionary<int,List<BL.Entities.WordViewModel>>)ViewData["wordRimes"] : new Dictionary<int,List<BL.Entities.WordViewModel>>();
+    var cauta = (ViewData["cauta"] != null) ? ViewData["cauta"].ToString() : string.Empty;
+}
+
+@if (@cauta == string.Empty)
+{
+    <h2>Caută rime</h2>
+
+}
+else
+{
+    <h2>Rime pentru:</h2> @cauta
+}
+<div class=" container">
+    <form class="navbar-form navbar-left" role="search" method="get" action="@Url.Action("Rime", "Word")">
+        <input type="text" class="form-control" placeholder="Cuvânt" name="cauta"><br /><br />
+        <button type="submit" class="btn btn-default">Caută rime</button>
+    </form>
+</div>
+
+<div class="container">
+    @foreach (var dictionaryItem in wordRimes)
+    {
+        <span>Rime de ordinul @dictionaryItem.Key</span>
+        <div class="rimeOrder">
+            @foreach (var word in dictionaryItem.Value)
+            {
+                <span>
+                    @word.Name
+                </span>
+            }
+        </div>
+    }
+</div>

@@ -1,0 +1,29 @@
+﻿@using DAL.Entities;
+
+@{
+    ViewBag.Title = "Definition";
+    var word = (WordMain)ViewData["word"];
+    var wordDefinitions = (List<WordDefinition>)ViewData["definitions"];
+
+}
+
+
+<h1> Cuvântul random este:<b> @word.FormNoAcc</b></h1>
+<a href="~/Word/Random">
+    <button type="submit" class="btn btn-default">Generează alt cuvânt random</button>
+</a>
+
+
+@*@if (wordDefinitions != null && wordDefinitions.Count > 0)*@
+@if (wordDefinitions.Count > 0)
+{
+    <h3>Definitii: </h3>
+
+    foreach (var item in wordDefinitions)
+    {
+        <div class="definitionText">
+            @Html.Raw(item.htmlRep) <br />
+            Sursa: @Html.Raw(item.SourceShortName)
+        </div>
+    }
+}

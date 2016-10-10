@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Verifică ortografia textului</h1>
+        <p>
+            Asigură-te că textul tău nu cunține greșeli!
+        </p>
+        <button class="btn btn-lg">@Html.ActionLink("Începe", "Index", "Text")</button>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Vezi definițiile cuvintelor</h2>
+            <p>Cu ajutorul dexonline.ro punem la dispoziție definițiile cuvintelor căutate de dvs.</p>
+            <button class="btn btn-lg">@Html.ActionLink("Gasește definiții", "Index", "Resource")</button>
+        </div>
+        <div class="col-md-6">
+            <h2>Generează cuvânt random</h2>
+            <p>Din baza noastră de date de peste 1.7 mil. de cuvinte, generează-l și vezi definiția</p>
+            <button class="btn btn-lg">@Html.ActionLink("Generează", "Random", "Word")</button>
+        </div>
+    </div>
+</div>
+

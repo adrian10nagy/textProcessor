@@ -1,0 +1,27 @@
+﻿@using BL.Entities;
+
+@{
+    ViewBag.Title = "Definition";
+    var word = (WordViewModel)ViewData["Word"];
+
+}
+
+<h1>Cuvăntul zilei @DateTime.Now.ToShortDateString() : @word.Name</h1>
+
+@if (word.Definitions.Count > 0)
+{
+
+    foreach (var item in word.Definitions)
+    {
+        <div class="definitionText">
+            @Html.Raw(item.htmlRep) <br />
+            Sursa: @Html.ActionLink(@item.SourceShortName, "Definitions", "Credits", null, null, @item.SourceUrlName, null, null)
+
+        </div>
+    }
+}
+else
+{
+    <p> Nu s-au gasit definiții pentru <b>@word.Name</b></p>
+}
+

@@ -1,0 +1,10 @@
+D:\Projects\gramaticaRo\DictionaryParse\WebDictionaryParse\WebDictionaryParse\bin\Debug\WebDictionaryParse.exe.config
+D:\Projects\gramaticaRo\DictionaryParse\WebDictionaryParse\WebDictionaryParse\bin\Debug\WebDictionaryParse.exe
+D:\Projects\gramaticaRo\DictionaryParse\WebDictionaryParse\WebDictionaryParse\bin\Debug\WebDictionaryParse.pdb
+D:\Projects\gramaticaRo\DictionaryParse\WebDictionaryParse\WebDictionaryParse\bin\Debug\DAL.dll
+D:\Projects\gramaticaRo\DictionaryParse\WebDictionaryParse\WebDictionaryParse\bin\Debug\HtmlAgilityPack.dll
+D:\Projects\gramaticaRo\DictionaryParse\WebDictionaryParse\WebDictionaryParse\bin\Debug\DAL.pdb
+D:\Projects\gramaticaRo\DictionaryParse\WebDictionaryParse\WebDictionaryParse\bin\Debug\HtmlAgilityPack.pdb
+D:\Projects\gramaticaRo\DictionaryParse\WebDictionaryParse\WebDictionaryParse\bin\Debug\HtmlAgilityPack.xml
+D:\Projects\gramaticaRo\DictionaryParse\WebDictionaryParse\WebDictionaryParse\obj\Debug\WebDictionaryParse.exe
+D:\Projects\gramaticaRo\DictionaryParse\WebDictionaryParse\WebDictionaryParse\obj\Debug\WebDictionaryParse.pdb

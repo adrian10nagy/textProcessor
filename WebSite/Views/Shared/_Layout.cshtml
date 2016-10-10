@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - GramaticaRo</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/jquery-ui")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("GramaticaRo", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Verificare Text", "Index", "Text")</li>
+                    <li>@Html.ActionLink("Definiții", "Index", "Resource")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Speciale <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Cuvânt random", "Random", "Word", null, null)</li>
+                            <li>@Html.ActionLink("Rime", "Rime", "Word", null, null)</li>
+                            <li>@Html.ActionLink("Cuvântul zilei", "WordOfTheDay", "Word", null, null)</li>
+                            <li>@Html.ActionLink("Ghicește cuvântul", "GuessWord", "Game", null, null)</li>
+                            <li>@Html.ActionLink("Rearanjează literele", "ScrambleWord", "Game", null, null)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <form class="navbar-form navbar-left" role="search" method="get" action="@Url.Action("Search", "Resource")">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search" name="searchText">
+                            </div>
+                            <button type="submit" class="btn btn-default">Search</button>
+                        </form>
+                    </li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (!WebSite.Helpers.BaseMVC.IsLoggedIn())
+                    {
+                        <li>@Html.ActionLink("Înregistreză-te", "Inregistrare", "User")</li>
+                        <li>@Html.ActionLink("Loghează-te", "Login", "User")</li>                    }
+                    else
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome, @WebSite.Helpers.BaseMVC.User.FirstName!</a>
+                            <ul class="dropdown-menu">
+                                @*<li>@Html.ActionLink("My profile", "Profile", "User", null, null)</li>*@
+                                <li role="separator" class="divider"></li>
+                                <li> @Html.ActionLink("Log out", "Logout", "User", new { @class = "loginNavbar" }, null)</li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - GramaticaRo</p>
+            <div class="col-md-4">
+                <p>@Html.ActionLink("Despre noi", "About", "Home")</p>
+                <p><a href="https://www.facebook.com/Knowledge-Share-1661823660750306">Follow us on Facebook</a></p>
+            </div>
+            <div class="col-md-4">
+                <p>Credite speciale: <a href="https://www/dexOnline.ro">DexOnline.ro</a></p>
+                <p>@Html.ActionLink("Sursele definițiilor", "Definitions", "Credits", null, null)</p>
+                <p>@Html.ActionLink("Parteneri", "Partners", "Credits", null, null)</p>
+            </div>
+            <div class="col-md-4">
+                <p>@Html.ActionLink("Contact", "Contact", "Home")</p>
+                <p>City: Cluj-Napoca</p>
+                <p>contact@knowledgeshare.ro</p>
+                <p>office@knowledgeshare.ro</p>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/validation")
+    @Scripts.Render("~/bundles/resource")
+    @Scripts.Render("~/bundles/jquery-ui")
+    @Scripts.Render("~/bundles/Game")
+    @Scripts.Render("~/bundles/TextSpelling")
+    @RenderSection("scripts", required: false)
+
+    @RenderPage("~/Views/Shared/Helpers/_GoogleAnalytics.cshtml")
+</body>
+</html>

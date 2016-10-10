@@ -1,0 +1,18 @@
+﻿<h2>Răspuns corect!</h2>
+<div class="row">
+    <div class="col-md-6">
+        <p>Fa-ti cont, contorizeaza-ti rezultatele!</p>
+        @using (Html.BeginForm("Inregistrare", "User", FormMethod.Get))
+        {
+            <input type="submit" value="Vreau sa-mi fac cont" />
+        }
+    </div>
+    <div class="col-md-6">
+        Joc nou, fără cont
+        @using (Html.BeginForm("ScrambleWord", "Game", FormMethod.Get))
+        {
+            @Html.AntiForgeryToken()
+            <input type="submit" value="Joc nou" />
+        }
+    </div>
+</div>

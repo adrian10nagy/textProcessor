@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DAL.Entities.WordMain>
+
+@{
+    ViewBag.Title = "AllWords";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FormNoAcc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pronunciation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Frequency)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FormNoAcc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pronunciation)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Frequency)
+        </td>
+     
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+        </td>
+    </tr>
+}
+
+</table>

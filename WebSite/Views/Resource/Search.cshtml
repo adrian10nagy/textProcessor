@@ -1,0 +1,58 @@
+﻿@model List<DAL.Entities.WordMain>
+@using DAL.Entities;
+
+@{
+    ViewBag.Title = "Search";
+    var inflectedWords = (List<WordInflection>)ViewData["inflectedWords"];
+}
+
+<h2>Caută definiții</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <p>Cuvant</p>
+        </th>
+        <th>
+            <p>Vezi definiții</p>
+        </th>
+        <th>
+            <p>Vezi inflexiunile cuvântului</p>
+        </th>
+    </tr>
+
+    @if (Model.Count > 0)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FormNoAcc)
+                </td>
+                <td>
+                    @Html.ActionLink("Vezi definiții", "Definition", "Word", new { id = item.lexemId }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("Vezi inflexiunile cuvântului", "Details", new { id = item.lexemId })
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        foreach (var item in inflectedWords)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FormNoAcc)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.LexemId })
+                </td>
+            </tr>
+        }
+    }
+</table>

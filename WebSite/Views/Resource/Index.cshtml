@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Cauta cuvânt</h2>
+<div class=" container">
+
+    <form class="navbar-form navbar-left" role="search" method="get" action="@Url.Action("Search", "Resource")">
+        <input type="text" class="form-control" placeholder="Cuvânt" name="searchText">
+        <button type="submit" class="btn btn-default">Search</button>
+    </form>
+</div>
+

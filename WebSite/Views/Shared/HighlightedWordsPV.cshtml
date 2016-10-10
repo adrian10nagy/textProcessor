@@ -1,0 +1,15 @@
+﻿@model IEnumerable<DAL.Entities.AnalizedWord>
+
+@foreach (var item in Model)
+{
+    <div class="col-md-12 wrongWordsDiv">
+        <div class="wrongWordBtnDiv">
+            <div class="wrongWordDiv">
+                @Html.DisplayFor(modelItem => item.Name)
+            </div>
+            @*<input type="button" onclick="setWordCorrect('@item.Name')" value="E corect" class="btn btn-success" />*@
+            <input type="button" onclick="getWordDisplayed()" value="Unde apare?" class="btn btn-info" />
+            <input type="button" onclick="getWordSugestions()" value="Dă-mi sugestii" class="btn btn-info" />
+        </div>
+    </div>
+}

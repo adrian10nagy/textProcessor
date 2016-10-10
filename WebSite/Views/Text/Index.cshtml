@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <h2>Incarcă fișierul (PDF, Docx, TXT) și verifica textul</h2>
+
+        @using (Html.BeginForm("Verifica", "Text", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary(true)
+            <input type="file" name="file" />
+            <br />
+            <input type="submit" id="btnTextUploadFile" name="btnTextUploadFile" value="Incarca" class="btn btn-lg btn-block btn-primary" />
+        }
+    </div>
+    <div class="col-md-9">
+        @Html.Partial("~/Views/Shared/_TextSpellingCheck.cshtml")
+
+        <input type="button" class="btn btn-default" value="Procesează" onclick="btnSpellCheck()">
+    </div>
+    @*<div class="col-md-12" id="notExistingWords"></div>*@
+
+    @*<div class="col-md-12">
+            <textarea name="textareaMain" rows="5" id="textareaMain"></textarea>
+    </div>*@
+    @*<input type="button" id="btnCheckWords" class="form-control" value="Check Words" />*@
+
+    @*<div id="AddWordDetailsForm"></div>*@
+
+    @*div for TrueEditor preview*@
+    <div id="previewDiv"></div>
+</div>

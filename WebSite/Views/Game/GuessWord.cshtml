@@ -1,0 +1,47 @@
+﻿@model BL.Entities.GameWord
+@using System.Text
+@using BL.Entities;
+
+@{
+    List<GameWord> fggdfg = new List<GameWord>();
+    ViewBag.Title = "Ghicește cuvântul";
+    var positionKeeper = @Model.Characters.Where(c => c.IsVisible == false).FirstOrDefault().Position;
+    var missingChars = string.Join(",", @Model.Characters.Where(c => c.IsVisible == false).Select(s=>s.Position).ToList());
+}
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<h2>Ghicește cuvântul</h2>
+
+<div>
+    <input type="hidden" id="gameGuessWordPositionKeeper" value="@positionKeeper" />
+    <input type="hidden" id="gameGuessMissingChars" value="@missingChars" />
+    <input type="hidden" id="gameGuessWordCorrect" value="@Model.Name" />
+    <p id="mainFeedback"></p>
+
+    <div class="mainGameWord">
+        @for (int i = 0; i < @Model.Characters.Count; i++)			
+        {
+            if (@Model.Characters[i].IsVisible)
+            {
+                <div class="mainGameWordChar">
+                    @Model.Characters[i].Character
+                </div>
+            }
+            else
+            {
+                <div class="mainGameWordChar droppable" id="@string.Format("maingamewordchar{0}", @i)">
+                    ?
+                </div>
+                 <input type="hidden" id="@string.Format("maingamewordhiddenchar{0}", @i)" value="@Model.Characters[i].Character" />
+            }
+        }
+    </div>
+    <div class="mainGameWordSuggestions">
+        @foreach (var suggestedCh in Model.SugestedCharacters)
+        {
+            <div class="draggable mainGameWordsuggestedChar " onclick="GameGuessWordAddChar('@suggestedCh')">
+                @suggestedCh
+            </div>
+        }
+    </div>
+</div>

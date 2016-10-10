@@ -1,0 +1,28 @@
+﻿@using DAL.Entities;
+
+@{
+    ViewBag.Title = "Definition";
+    var wordDefinitions = (List<WordDefinition>)ViewData["WordDefinitions"];
+    var WordLexemText = (string)ViewData["WordLexemText"];
+    
+}
+
+    <h1>@WordLexemText</h1>
+
+    <h3>Definitii</h3>
+
+@if(wordDefinitions.Count > 0){
+    
+    foreach (var item in wordDefinitions)
+    {
+        <div class="definitionText">
+           @Html.Raw(item.htmlRep) <br />
+            Sursa: @Html.ActionLink(@item.SourceShortName, "Definitions", "Credits", null, null, @item.SourceUrlName, null, null)
+
+        </div>
+    }
+}
+else
+{
+    <p> Nu s-au gasit definiții pentru <b>@WordLexemText</b></p>
+}

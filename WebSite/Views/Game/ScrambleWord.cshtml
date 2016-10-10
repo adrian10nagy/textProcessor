@@ -1,0 +1,45 @@
+﻿@model BL.Entities.GameWordScramble
+
+@{
+    ViewBag.Title = "ScrambleWord";
+}
+
+<h2>Rearanjează literele</h2>
+
+<div>
+    <input type="hidden" id="maingameWordKeeper" value="" />
+    <input type="hidden" id="maingameWordOriginal" value="@Model.Name" />
+    <div class="mainGameWord">
+        @for (int i = 0; i < @Model.NameChar.Count; i++)
+        {
+            <div class="mainGameWordToAddChar droppable" id="@string.Format("maingamewordchar{0}", @i)">
+
+            </div>
+            <input type="hidden" id="@string.Format("maingamewordchar{0}", @i)" value="@Model.NameChar[i]" />
+        }
+        <div class="displayInline" id="resetWord"> Reset </div>
+    </div>
+    <div class="mainGameWordSuggestions">
+        @foreach (var suggestedCh in Model.NameScrabled)
+        {
+            <div class="draggable mainGameWordsuggestedChar " onclick="addTofinalWord('@suggestedCh.Value')">
+                @suggestedCh.Value
+            </div>
+        }
+    </div>
+    <div>
+        <div class="displayInline">
+            <a href="/Game/ScrambleWord"><input type='button' class="btn btn-primary" value='Alt cuvânt' /> </a>
+        </div>
+        <div class="displayInline">
+            <a href="/Game/ScrambleWord"><input type='button' class="btn btn-primary" value='Joacă din nou' /> </a>
+        </div>
+        <div class="displayInline">
+            <a href="/Game/GuessWord"><input type="button" class="btn btn-primary" value="Joacă alt joc" /></a>
+        </div>
+    </div>
+
+    @* Modal Div *@
+    <div id="scrambleWordModal"></div>
+
+</div>
